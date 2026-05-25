@@ -2,42 +2,58 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load saved model and feature columns
+# Load model and columns
 model = joblib.load("models/churn_model.pkl")
 model_columns = joblib.load("models/model_columns.pkl")
 
-# Page title
-st.title("Customer Churn Prediction")
-st.write("Enter customer details to predict whether the customer will churn.")
+st.title("Customer Churn Prediction App")
 
-# Input fields
-tenure = st.number_input("Tenure (months)", min_value=0, max_value=100, value=12)
-monthly_charges = st.number_input("Monthly Charges", min_value=0.0, value=70.0)
-total_charges = st.number_input("Total Charges", min_value=0.0, value=840.0)
+st.write("Enter customer details below:")
+
+# Inputs
+SeniorCitizen = st.selectbox("Senior Citizen", [0, 1])
+
+tenure = st.slider("Tenure (months)", 0, 72, 12)
+
+MonthlyCharges = st.number_input(
+    "Monthly Charges",
+    min_value=0.0,
+    max_value=500.0,
+    value=50.0
+)
+
+TotalCharges = st.number_input(
+    "Total Charges",
+    min_value=0.0,
+    max_value=10000.0,
+    value=1000.0
+)
+
+# Create input dictionary
+input_data = {
+    "SeniorCitizen": SeniorCitizen,
+    "tenure": tenure,
+    "MonthlyCharges": MonthlyCharges,
+    "TotalCharges": TotalCharges
+}
+
+# Convert to dataframe
+input_df = pd.DataFrame([input_data])
+
+# Add missing columns
+for col in model_columns:
+    if col not in input_df.columns:
+        input_df[col] = 0
+
+# Arrange columns
+input_df = input_df[model_columns]
 
 # Prediction button
 if st.button("Predict Churn"):
 
-    # Create dictionary with all model columns initialized to 0
-    input_data = {col: 0 for col in model_columns}
+    prediction = model.predict(input_df)
 
-    # Fill numerical features
-    if "tenure" in input_data:
-        input_data["tenure"] = tenure
-    if "MonthlyCharges" in input_data:
-        input_data["MonthlyCharges"] = monthly_charges
-    if "TotalCharges" in input_data:
-        input_data["TotalCharges"] = total_charges
-
-    # Convert to DataFrame
-    input_df = pd.DataFrame([input_data])
-
-    # Make prediction
-    prediction = model.predict(input_df)[0]
-    probability = model.predict_proba(input_df)[0][1]
-
-    # Show result
-    if prediction == 1:
-        st.error(f"Customer is likely to churn. Probability: {probability:.2%}")
+    if prediction[0] == 1:
+        st.error("Customer is likely to churn.")
     else:
-        st.success(f"Customer is likely to stay. Churn probability: {probability:.2%}")
+        st.success("Customer is likely to stay.")
