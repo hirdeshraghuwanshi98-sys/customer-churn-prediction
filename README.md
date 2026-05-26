@@ -1,5 +1,13 @@
 # 📊 Customer Churn Prediction Using Machine Learning
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+
+![Streamlit](https://img.shields.io/badge/Streamlit-Deployed-red)
+
+![Machine Learning](https://img.shields.io/badge/Machine-Learning-green)
+
+![Status](https://img.shields.io/badge/Status-Completed-success)
+
 ## 🚀 Live Demo
 [Streamlit App](https://customer-churn-prediction-xq67aut6mwtgv7clhprp5a.streamlit.app/)
 
@@ -66,7 +74,24 @@ customer-churn-prediction/
 │
 └── README.md
 
+---
 
+## 🏗️ Project Architecture
+
+```text
+Dataset
+   ↓
+Data Preprocessing
+   ↓
+Feature Encoding
+   ↓
+Random Forest Model
+   ↓
+Model Saving (.pkl)
+   ↓
+Streamlit Web App
+   ↓
+Real-Time Churn Prediction
 
 ![Dashboard](images/dashboard.png)
 

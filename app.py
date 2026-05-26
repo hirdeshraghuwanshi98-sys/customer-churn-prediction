@@ -1,3 +1,14 @@
+login_user = st.sidebar.text_input("Username")
+
+login_password = st.sidebar.text_input(
+    "Password",
+    type="password"
+)
+
+if login_user != "admin" or login_password != "admin123":
+    st.warning("Please login to continue")
+    st.stop()
+    
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
