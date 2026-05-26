@@ -66,6 +66,12 @@ customer-churn-prediction/
 │
 └── README.md
 
+
+
+![Dashboard](images/dashboard.png)
+
+![Prediction](images/prediction.png)
+
 ## 📈 Future Improvements
 
 - Add AWS deployment
