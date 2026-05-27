@@ -9,7 +9,7 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 🚀 Live Demo
-[Streamlit App](https://customer-churn-prediction-xq67aut6mwtgv7clhprp5a.streamlit.app/)
+[Streamlit App]https://customer-churn-prediction-xq67aut6mwtgv7clhprp5a.streamlit.app/
 
 ---
 
