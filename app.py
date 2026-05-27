@@ -1,7 +1,17 @@
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import joblib
 
+# MUST BE FIRST STREAMLIT COMMAND
+st.set_page_config(
+    page_title="Customer Churn Prediction",
+    page_icon="📊",
+    layout="centered"
+)
+
+# LOGIN
 login_user = st.sidebar.text_input("Username")
-
 login_password = st.sidebar.text_input(
     "Password",
     type="password"
@@ -10,46 +20,35 @@ login_password = st.sidebar.text_input(
 if login_user != "admin" or login_password != "admin123":
     st.warning("Please login to continue")
     st.stop()
-    
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import joblib
 
-# Load model and columns
+# LOAD MODEL
 model = joblib.load("models/churn_model.pkl")
 model_columns = joblib.load("models/model_columns.pkl")
 
-import streamlit as st
-import pandas as pd
-import joblib
-
-st.set_page_config(
-    page_title="Customer Churn Prediction",
-    page_icon="📊",
-    layout="centered"
-)
-
+# TITLE
 st.title("📊 Customer Churn Prediction System")
 
 st.markdown(
     "### Predict whether a telecom customer is likely to churn using Machine Learning"
 )
 
+# SIDEBAR
 st.sidebar.title("About Project")
 
 st.sidebar.info(
-    '''
+    """
     This Machine Learning project predicts customer churn.
 
     Built using:
     - Python
     - Scikit-learn
     - Streamlit
-    '''
+    """
 )
 
+# STYLING
 st.write("---")
+
 st.markdown(
     """
     <style>
@@ -70,18 +69,12 @@ st.markdown(
         font-weight: bold;
     }
 
-    .stMetric {
-        background-color: #262730;
-        padding: 10px;
-        border-radius: 10px;
-    }
-
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Inputs
+# INPUTS
 col1, col2 = st.columns(2)
 
 with col1:
@@ -114,7 +107,7 @@ with col2:
         value=1000.0
     )
 
-# Create input dictionary
+# INPUT DATA
 input_data = {
     "SeniorCitizen": SeniorCitizen,
     "tenure": tenure,
@@ -122,18 +115,18 @@ input_data = {
     "TotalCharges": TotalCharges
 }
 
-# Convert to dataframe
+# DATAFRAME
 input_df = pd.DataFrame([input_data])
 
-# Add missing columns
+# ADD MISSING COLUMNS
 for col in model_columns:
     if col not in input_df.columns:
         input_df[col] = 0
 
-# Arrange columns
+# COLUMN ORDER
 input_df = input_df[model_columns]
 
-# Prediction button
+# PREDICTION
 if st.button("Predict Churn"):
 
     prediction = model.predict(input_df)
@@ -147,10 +140,9 @@ if st.button("Predict Churn"):
     st.metric(
         label="Churn Probability",
         value=f"{probability:.2%}"
-        )
+    )
 
-        # Visualization Chart
-
+    # CHART
     st.write("---")
 
     st.subheader("Prediction Visualization")
@@ -168,8 +160,9 @@ if st.button("Predict Churn"):
     ax.set_title("Customer Churn Prediction")
 
     st.pyplot(fig)
-    
-    st.write("---")
+
+# FEATURE IMPORTANCE
+st.write("---")
 
 st.subheader("Feature Importance")
 
@@ -201,4 +194,4 @@ try:
     st.pyplot(fig2)
 
 except:
-    st.warning("Feature importance not available for this model.")
+    st.info("Feature importance not available for this model.")
