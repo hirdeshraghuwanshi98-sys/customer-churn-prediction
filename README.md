@@ -35,12 +35,15 @@ The core MLOps pipeline (`train.py`) executes automated competitive evaluation t
 ### Step 1: Automated Pipeline Training (`train.py`)
 Running the local orchestration script triggers the evaluation engine. It loops through data profiles, extracts test weights, and generates data schemas along with performance logs inside the `/models/` directory.
 
-![Automated Model Competitive Performance Benchmarking](images/prediction.png)
+<img src="images/prediction_metrics.png" alt="ROC and Precision-Recall Curves" width="100%" style="margin-bottom: 15px;">
+<img src="images/prediction_curves.png" alt="Model Evaluation Leaderboard" width="100%">
 
 ### Step 2: Operational Dashboard Analysis (`app.py`)
 The Streamlit frontend loads the serialized champion artifacts seamlessly, rendering secure administrative controls, live metrics risk gauges, and feature importance matrices.
 
-![Production Streamlit Interactive Insights Interface](images/dashboard.png)
+<img src="images/dashboard_login.png" alt="Secure Gateway Login Interface" width="100%" style="margin-bottom: 15px;">
+<img src="images/dashboard_main.png" alt="Live Risk Assessment Gauge Dashboard" width="100%" style="margin-bottom: 15px;">
+<img src="images/dashboard_charts.png" alt="Feature Weight Allocation Analytics" width="100%">
 ---
 
 ## 📂 Repository Blueprint
