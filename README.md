@@ -30,16 +30,15 @@ The core MLOps pipeline (`train.py`) executes automated competitive evaluation t
 
 🚀 Initializing Production Training Pipeline...
 =======================================================
-📥 Loading IBM Telco Customer Churn Dataset (7,043 rows)...
+📥 _Loading IBM Telco Customer Churn Dataset (7,043 rows)...
 ✅ Dataset loaded successfully — 7043 rows, 21 columns
 🔧 Running preprocessing pipeline...
 ✅ Preprocessing complete — 30 features, 7032 samples
 💾 Saved model_columns.pkl — 30 features
 📊 Train: 5625 samples | Test: 1407 samples
-📊 Churn rate in test set: 26.58%
-=======================================================
-
+📊 Churn rate in test set: 26.58%_
 🔄 Training Random_Forest on 5625 real Telco samples...
+
 📊 Random_Forest Results:
    Accuracy  : 78.96%
    Precision : 63.18%
@@ -55,14 +54,13 @@ The core MLOps pipeline (`train.py`) executes automated competitive evaluation t
    F1-Score  : 57.76%
    ROC-AUC   : 0.8301
 
-=======================================================
 🏆 Champion Model : XGBoost
    Best F1-Score  : 57.76%
 💾 Artifacts saved:
    models/churn_model.pkl
    models/model_columns.pkl
    models/evaluation_metrics.json
-=======================================================
+
 ---
 
 ## 🛠️ Step-by-Step System Walkthrough
