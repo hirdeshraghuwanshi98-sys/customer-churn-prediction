@@ -1,107 +1,61 @@
-# 📊 Customer Churn Prediction Using Machine Learning
+# 📊 Enterprise Customer Churn Prediction Ecosystem
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
+[![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Framework](https://img.shields.io/badge/FastAPI-v0.110-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Dashboard](https://img.shields.io/badge/Streamlit-v1.45-FF4B4B?style=for-the-badge&logo=streamlit)](https://streamlit.io/)
+[![Model](https://img.shields.io/badge/XGBoost-Enabled-0172B2?style=for-the-badge&logo=xgboost)](https://xgboost.readthedocs.io/)
 
-![Streamlit](https://img.shields.io/badge/Streamlit-Deployed-red)
-
-![Machine Learning](https://img.shields.io/badge/Machine-Learning-green)
-
-![Status](https://img.shields.io/badge/Status-Completed-success)
-
-## 🚀 Live Demo
-[Streamlit App]https://customer-churn-prediction-xq67aut6mwtgv7clhprp5a.streamlit.app/
+An end-to-end, enterprise-grade Machine Learning Engineering pipeline designed to ingest consumer telemetry metrics, benchmark multiple classification model architectures, and serve real-time subscriber attrition risk profiles via an interactive analytics dashboard and a high-throughput REST API.
 
 ---
 
-## 📌 Project Overview
+## 🚀 Live Production Links & Access
+* **Interactive Frontend Dashboard:** [Streamlit Service UI](https://customer-churn-prediction-47zyecvht4xpvk8mninywq.streamlit.app/)
 
-This project predicts whether a telecom customer is likely to churn using Machine Learning.
-
-The application is built using:
-- Python
-- Scikit-learn
-- Streamlit
-
-The model analyzes customer information and predicts churn probability in real time.
+### 🔑 Demo Evaluation Credentials
+To bypass the security authentication gateway on the live production interface, please utilize the following credentials:
+* **Username:** `admin`
+* **Password:** `admin123`
 
 ---
 
-## ✨ Features
+## 📌 Project Architecture & Core Features
 
-✅ Customer churn prediction  
-✅ Probability score  
-✅ Interactive Streamlit dashboard  
-✅ Feature importance visualization  
-✅ Real-time predictions  
-✅ Machine learning model deployment  
+* **Multi-Model Competitive Benchmarking (`train.py`):** Dynamically trains and validates `RandomForest` and `XGBoost` architectures, tracking Precision, Recall, F1-Score, and ROC-AUC metrics to ensure mathematical alignment.
+* **Auto-Artifact Serialization Engine:** Automatically serializes the optimal champion model based on the highest F1-Score to balance consumer retention economics.
+* **Secure Production Client Interface (`app.py`):** Interactive UI featuring a Role-Based Authentication Gateway (Streamlit Secrets Layer), responsive prediction gauges, dynamic feature weight tracking, and performance comparison leaderboards.
+* **High-Performance Restful Interface (`api.py`):** Production-ready FastAPI routing optimized with strict `Pydantic` schema validations and automated local log rotation tracking (`logs/production.log`).
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Dependencies
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Streamlit
-- Matplotlib
-- Joblib
-
----
-
-## 🤖 Machine Learning Model
-
-Model Used:
-- Random Forest Classifier
+* **Core Language:** Python 3.11
+* **Machine Learning Pipelines:** Scikit-Learn, XGBoost
+* **Data Processing & Analytics:** Pandas, NumPy
+* **Visualization Layer:** Matplotlib
+* **API Routing & Serving:** FastAPI, Uvicorn
+* **Deployment Stack:** Streamlit Community Cloud, Docker
 
 ---
 
-## 📂 Project Structure
+## 📂 Repository Blueprint
 
 ```text
 customer-churn-prediction/
 │
-├── app.py
-├── requirements.txt
-├── runtime.txt
+├── train.py                  # Automated baseline model comparison & training engine
+├── app.py                    # Multi-tab operational Streamlit analytics view
+├── api.py                    # High-throughput FastAPI core inference gateway
 │
-├── models/
-│   ├── churn_model.pkl
-│   └── model_columns.pkl
+├── models/                   # Serialized pipeline assets directory
+│   ├── churn_model.pkl       # Automated top-performing champion model
+│   ├── model_columns.pkl     # Persisted validation structural shape arrays
+│   └── evaluation_metrics.json  # Exported evaluation leaderboard metrics matrix
 │
-├── notebooks/
-│   └── churn_prediction.ipynb
+├── logs/
+│   └── production.log        # Self-contained active execution error ledger
 │
-└── README.md
-
----
-
-## 🏗️ Project Architecture
-
-```text
-Dataset
-   ↓
-Data Preprocessing
-   ↓
-Feature Encoding
-   ↓
-Random Forest Model
-   ↓
-Model Saving (.pkl)
-   ↓
-Streamlit Web App
-   ↓
-Real-Time Churn Prediction
-
-![Dashboard](images/dashboard.png)
-
-![Prediction](images/prediction.png)
-
-## 📈 Future Improvements
-
-- Add AWS deployment
-- Add CI/CD pipeline
-- Add Docker support
-- Add database integration
-- Add real-time analytics dashboard
-- Add advanced explainable AI features
+├── Dockerfile                # Multi-stage microservice image container context
+├── requirements.txt          # Explicitly pinned application package distributions
+└── README.md                 # Interactive architectural summary documentation
