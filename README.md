@@ -68,7 +68,7 @@ The core MLOps pipeline (`train.py`) executes automated competitive evaluation t
 ### Step 1: Automated Pipeline Training (`train.py`)
 Running the local orchestration script triggers the evaluation engine. It loops through data profiles, extracts test weights, and generates data schemas along with performance logs inside the `/models/` directory.
 
-<img src="images/prediction_metrics.png" alt="ROC and Precision-Recall Curves" width="500%" style="margin-bottom: 15px;">
+<img src="images/prediction_metrics.png" alt="ROC and Precision-Recall Curves" width="50%" style="margin-bottom: 15px;">
 <img src="images/prediction_curves.png" alt="Model Evaluation Leaderboard" width="50%">
 
 ### Step 2: Operational Dashboard Analysis (`app.py`)
