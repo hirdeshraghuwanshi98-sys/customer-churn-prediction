@@ -13,9 +13,14 @@ An end-to-end, enterprise-grade Machine Learning Engineering pipeline designed t
 * **Interactive Frontend Dashboard:** [Streamlit Service UI](https://customer-churn-prediction-47zyecvht4xpvk8mninywq.streamlit.app/)
 
 ### 🔑 Demo Evaluation Credentials
-To bypass the security authentication gateway on the live production interface, please utilize the following credentials:
-* **Username:** `admin`
-* **Password:** `admin123`
+## Demo Access
+This app uses environment-based authentication via 
+st.secrets. For local deployment, create a 
+.streamlit/secrets.toml file:
+
+[secrets]
+ADMIN_USER = "your_username"
+ADMIN_PASSWORD = "your_password"
 
 ---
 
@@ -23,11 +28,41 @@ To bypass the security authentication gateway on the live production interface, 
 
 The core MLOps pipeline (`train.py`) executes automated competitive evaluation training across different model architectures. The champion model is selected dynamically using the **F1-Score** to balance business retention costs accurately.
 
-| Model Architecture | Accuracy | Precision | Recall | F1-Score | ROC-AUC | Status |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **XGBoost Classifier** | **83.50%** | **74.12%** | **68.48%** | **71.19%** | **0.8840** | 🏆 **Champion Model** |
-| Random Forest | 81.00% | 71.25% | 61.96% | 66.28% | 0.8560 | Baseline |
+🚀 Initializing Production Training Pipeline...
+=======================================================
+📥 Loading IBM Telco Customer Churn Dataset (7,043 rows)...
+✅ Dataset loaded successfully — 7043 rows, 21 columns
+🔧 Running preprocessing pipeline...
+✅ Preprocessing complete — 30 features, 7032 samples
+💾 Saved model_columns.pkl — 30 features
+📊 Train: 5625 samples | Test: 1407 samples
+📊 Churn rate in test set: 26.58%
+=======================================================
 
+🔄 Training Random_Forest on 5625 real Telco samples...
+📊 Random_Forest Results:
+   Accuracy  : 78.96%
+   Precision : 63.18%
+   Recall    : 50.00%
+   F1-Score  : 55.82%
+   ROC-AUC   : 0.8329
+
+🔄 Training XGBoost on 5625 real Telco samples...
+📊 XGBoost Results:
+   Accuracy  : 79.10%
+   Precision : 62.42%
+   Recall    : 53.74%
+   F1-Score  : 57.76%
+   ROC-AUC   : 0.8301
+
+=======================================================
+🏆 Champion Model : XGBoost
+   Best F1-Score  : 57.76%
+💾 Artifacts saved:
+   models/churn_model.pkl
+   models/model_columns.pkl
+   models/evaluation_metrics.json
+=======================================================
 ---
 
 ## 🛠️ Step-by-Step System Walkthrough
@@ -35,15 +70,15 @@ The core MLOps pipeline (`train.py`) executes automated competitive evaluation t
 ### Step 1: Automated Pipeline Training (`train.py`)
 Running the local orchestration script triggers the evaluation engine. It loops through data profiles, extracts test weights, and generates data schemas along with performance logs inside the `/models/` directory.
 
-<img src="images/prediction_metrics.png" alt="ROC and Precision-Recall Curves" width="100%" style="margin-bottom: 15px;">
-<img src="images/prediction_curves.png" alt="Model Evaluation Leaderboard" width="100%">
+<img src="images/prediction_metrics.png" alt="ROC and Precision-Recall Curves" width="500%" style="margin-bottom: 15px;">
+<img src="images/prediction_curves.png" alt="Model Evaluation Leaderboard" width="50%">
 
 ### Step 2: Operational Dashboard Analysis (`app.py`)
 The Streamlit frontend loads the serialized champion artifacts seamlessly, rendering secure administrative controls, live metrics risk gauges, and feature importance matrices.
 
-<img src="images/dashboard_login.png" alt="Secure Gateway Login Interface" width="100%" style="margin-bottom: 15px;">
-<img src="images/dashboard_main.png" alt="Live Risk Assessment Gauge Dashboard" width="100%" style="margin-bottom: 15px;">
-<img src="images/dashboard_charts.png" alt="Feature Weight Allocation Analytics" width="100%">
+<img src="images/dashboard_login.png" alt="Secure Gateway Login Interface" width="50%" style="margin-bottom: 15px;">
+<img src="images/dashboard_main.png" alt="Live Risk Assessment Gauge Dashboard" width="50%" style="margin-bottom: 15px;">
+<img src="images/dashboard_charts.png" alt="Feature Weight Allocation Analytics" width="50%">
 ---
 
 ## 📂 Repository Blueprint
