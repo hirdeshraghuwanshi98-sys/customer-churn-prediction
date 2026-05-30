@@ -26,42 +26,74 @@ ADMIN_PASSWORD = "your_password"
 
 ## 📊 Model Benchmarking & Evaluation Scoreboard
 
-The core MLOps pipeline (`train.py`) executes automated competitive evaluation training across different model architectures. The champion model is selected dynamically using the **F1-Score** to balance business retention costs accurately.
+The core MLOps pipeline (`train.py`) performs automated competitive training and evaluation across multiple machine learning models. The champion model is selected dynamically using the **F1-Score**, ensuring an optimal balance between customer retention effectiveness and business costs.
 
+### 🚀 Training Pipeline Execution
+
+```text
 🚀 Initializing Production Training Pipeline...
-=======================================================
-📥 _Loading IBM Telco Customer Churn Dataset (7,043 rows)...
+
+📥 Loading IBM Telco Customer Churn Dataset (7,043 rows)...
 ✅ Dataset loaded successfully — 7043 rows, 21 columns
+
 🔧 Running preprocessing pipeline...
 ✅ Preprocessing complete — 30 features, 7032 samples
+
 💾 Saved model_columns.pkl — 30 features
+
 📊 Train: 5625 samples | Test: 1407 samples
-📊 Churn rate in test set: 26.58%_
-🔄 Training Random_Forest on 5625 real Telco samples...
+📊 Churn rate in test set: 26.58%
+```
 
-📊 Random_Forest Results:
-   Accuracy  : 78.96%
-   Precision : 63.18%
-   Recall    : 50.00%
-   F1-Score  : 55.82%
-   ROC-AUC   : 0.8329
+### 🌲 Random Forest Performance
 
-🔄 Training XGBoost on 5625 real Telco samples...
-📊 XGBoost Results:
-   Accuracy  : 79.10%
-   Precision : 62.42%
-   Recall    : 53.74%
-   F1-Score  : 57.76%
-   ROC-AUC   : 0.8301
+| Metric | Score |
+|----------|----------|
+| Accuracy | 78.96% |
+| Precision | 63.18% |
+| Recall | 50.00% |
+| F1-Score | 55.82% |
+| ROC-AUC | 0.8329 |
 
-🏆 Champion Model : XGBoost
-   Best F1-Score  : 57.76%
-💾 Artifacts saved:
-   models/churn_model.pkl
-   models/model_columns.pkl
-   models/evaluation_metrics.json
+### ⚡ XGBoost Performance
 
----
+| Metric | Score |
+|----------|----------|
+| Accuracy | 79.10% |
+| Precision | 62.42% |
+| Recall | 53.74% |
+| F1-Score | 57.76% |
+| ROC-AUC | 0.8301 |
+
+### 🏆 Champion Model
+
+| Model | Best F1-Score |
+|---------|---------|
+| XGBoost | 57.76% |
+
+### 💾 Generated Artifacts
+
+```text
+models/
+├── churn_model.pkl
+├── model_columns.pkl
+└── evaluation_metrics.json
+```
+
+### 🎯 Key Highlights
+
+- Automated model benchmarking and comparison
+- Dynamic champion model selection using F1-Score
+- End-to-end preprocessing and feature engineering
+- Production-ready artifact generation
+- Performance tracking with Accuracy, Precision, Recall, F1-Score, and ROC-AUC
+
+### ✅ Final Outcome
+
+**Champion Model:** XGBoost  
+**Best F1-Score:** 57.76%  
+**Test Accuracy:** 79.10%  
+**ROC-AUC Score:** 0.8301
 
 ## 🛠️ Step-by-Step System Walkthrough
 
