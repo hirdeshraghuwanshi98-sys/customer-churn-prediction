@@ -1,16 +1,16 @@
 {
     "Random_Forest": {
-        "Accuracy": 0.695,
-        "Precision": 0.3636,
-        "Recall": 0.069,
-        "F1_Score": 0.1159,
-        "ROC_AUC": 0.4881
+        "Accuracy": 0.7896,
+        "Precision": 0.6318,
+        "Recall": 0.5,
+        "F1_Score": 0.5582,
+        "ROC_AUC": 0.8329
     },
     "XGBoost": {
-        "Accuracy": 0.645,
-        "Precision": 0.2903,
-        "Recall": 0.1552,
-        "F1_Score": 0.2022,
-        "ROC_AUC": 0.5046
+        "Accuracy": 0.791,
+        "Precision": 0.6242,
+        "Recall": 0.5374,
+        "F1_Score": 0.5776,
+        "ROC_AUC": 0.8301
     }
 }
